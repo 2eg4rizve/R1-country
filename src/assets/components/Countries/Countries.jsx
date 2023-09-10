@@ -55,6 +55,7 @@ const Countries = () => {
         <div >
 
             <h1>All Countries</h1>
+            <button>Sort All Country</button>
             <h1>Countries : {countries.length}</h1>
             <div>
                 <h1>Visited Countries : {visitedCountries.length}</h1>
