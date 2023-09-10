@@ -7,6 +7,9 @@ const Countries = () => {
     const [countries, SetCountries] = useState([]);
     const [visitedCountries, setVisitedCountries] = useState([]);
 
+    // console.log("typeof visitedCountries  :")
+    // console.log(typeof visitedCountries);
+
     useEffect(() => {
         fetch('https://restcountries.com/v3.1/all')
             .then(res => res.json())
@@ -18,17 +21,34 @@ const Countries = () => {
     const handleVisitedCountry = country => {
         console.log("handleVisitedCountry Add this to your visited country");
         console.log(country);
+        console.log(visitedCountries);
+       
 
         const found = visitedCountries.find((element) => element === country);
 
-        if(!found)
-        {
-            const newVisitedCountries = [...visitedCountries,country];
+        if (!found) {
+            const newVisitedCountries = [...visitedCountries, country];
             setVisitedCountries(newVisitedCountries);
         }
-        
-       
-        
+
+
+
+    }
+  
+    
+
+    const handleDelete = country => {
+        console.log("handleDelete Delete this to your visited country");
+        console.log(country);
+        console.log(typeof country);
+
+        const result = visitedCountries.filter((element) => element !== country);
+
+        // const nowVisitedCountries = [...result];
+        // setVisitedCountries(nowVisitedCountries);
+
+        setVisitedCountries(result);
+
     }
 
     return (
@@ -50,6 +70,7 @@ const Countries = () => {
                     countries.map(country => <Country
                         key={country.cca3}
                         handleVisitedCountry={handleVisitedCountry}
+                        handleDelete={handleDelete}
                         country={country}>
 
                     </Country>)
