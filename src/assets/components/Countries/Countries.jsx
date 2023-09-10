@@ -18,8 +18,16 @@ const Countries = () => {
     const handleVisitedCountry = country => {
         console.log("handleVisitedCountry Add this to your visited country");
         console.log(country);
-        const newVisitedCountries = [...visitedCountries,country];
-        setVisitedCountries(newVisitedCountries);
+
+        const found = visitedCountries.find((element) => element === country);
+
+        if(!found)
+        {
+            const newVisitedCountries = [...visitedCountries,country];
+            setVisitedCountries(newVisitedCountries);
+        }
+        
+       
         
     }
 
